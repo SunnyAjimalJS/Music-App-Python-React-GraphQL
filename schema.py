@@ -1,4 +1,5 @@
 import graphene
+import json
 
 
 class Query(graphene.ObjectType):
@@ -18,4 +19,5 @@ result = schema.execute(
     '''
 )
 
-print(result.data.items())
+dictResult = dict(result.data.items())
+print(json.dumps(dictResult))
