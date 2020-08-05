@@ -1,0 +1,6 @@
+{
+    "pythonIndent.trimLinesWithOnlyWhitespace": true,
+    "python.analysis.disabled": [
+        "unresolved import"
+    ]
+}
