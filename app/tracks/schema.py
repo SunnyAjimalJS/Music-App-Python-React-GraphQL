@@ -61,6 +61,10 @@ class UpdateTrack(graphene.Mutation):
         return UpdateTrack(track=track)
 
 
+class DeleteTrack(graphene.Mutation):
+    track_id = graphene.Int()
+
+
 class Mutation(graphene.ObjectType):
     create_track = CreateTrack.Field()
     update_track = UpdateTrack.Field()
