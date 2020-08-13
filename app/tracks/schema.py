@@ -81,6 +81,8 @@ class DeleteTrack(graphene.Mutation):
 
 
 class CreateLike(graphene.Mutation):
+    user = graphene.Field(UserType)
+    track = graphene.Field(TrackType)
 
 
 class Mutation(graphene.ObjectType):
