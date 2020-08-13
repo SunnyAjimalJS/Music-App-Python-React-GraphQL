@@ -1,7 +1,8 @@
 import graphene
 from graphene_django import DjangoObjectType
 
-from .models import Track
+from .models import Track, Like
+from users.schema import UserType
 
 
 class TrackType(DjangoObjectType):
@@ -77,6 +78,9 @@ class DeleteTrack(graphene.Mutation):
         track.delete()
 
         return DeleteTrack(track_id=track_id)
+
+
+class CreateLike(graphene.Mutation):
 
 
 class Mutation(graphene.ObjectType):
