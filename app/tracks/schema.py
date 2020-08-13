@@ -84,6 +84,9 @@ class CreateLike(graphene.Mutation):
     user = graphene.Field(UserType)
     track = graphene.Field(TrackType)
 
+    class Arguments:
+        track_id = graphene.Int(required=True)
+
 
 class Mutation(graphene.ObjectType):
     create_track = CreateTrack.Field()
