@@ -10,6 +10,11 @@ class TrackType(DjangoObjectType):
         model = Track
 
 
+class LikeType(DjangoObjectType):
+    class Meta:
+        model = Like
+
+
 class Query(graphene.ObjectType):
     tracks = graphene.List(TrackType)
 
