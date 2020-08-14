@@ -17,9 +17,13 @@ class LikeType(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     tracks = graphene.List(TrackType)
+    likes = graphene.List(LikeType)
 
     def resolve_tracks(self, info):
         return Track.objects.all()
+
+    def resolve_likes(self, info):
+        return Like.objects.all()
 
 
 class CreateTrack(graphene.Mutation):
