@@ -23,7 +23,7 @@ class Query(graphene.ObjectType):
 
     def resolve_tracks(self, info, search=None):
         if search:
-            return Track.objects.filter(title__startswith=search)
+            return Track.objects.filter(title__icontains=search)
 
         return Track.objects.all()
 
