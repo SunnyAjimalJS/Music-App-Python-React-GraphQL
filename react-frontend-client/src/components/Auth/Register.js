@@ -88,6 +88,9 @@ const Register = ({ classes }) => {
           }}
         </Mutation>
       </Paper>
+
+      {/* Success Dialog */}
+      <Dialog></Dialog>
     </div>
   );
 };
