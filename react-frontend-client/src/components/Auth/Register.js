@@ -100,6 +100,11 @@ const Register = ({ classes }) => {
             User successfully created! Welcome, {username}!
           </DialogContentText>
         </DialogContent>
+        <DialogActions>
+          <Button color="primary" variant="contained">
+            Login
+          </Button>
+        </DialogActions>
       </Dialog>
     </div>
   );
