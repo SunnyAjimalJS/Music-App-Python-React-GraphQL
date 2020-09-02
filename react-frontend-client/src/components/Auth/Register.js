@@ -24,6 +24,11 @@ const Register = ({ classes }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleSubmit = (event, createUser) => {
+    event.preventDefault();
+    createUser();
+  };
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -32,10 +37,16 @@ const Register = ({ classes }) => {
         </Avatar>
         <Typography variant="headline">Register</Typography>
 
-        <Mutation mutation={REGISTER_MUTATION}>
-          {() => {
+        <Mutation
+          mutation={REGISTER_MUTATION}
+          variables={{ username, email, password }}
+        >
+          {(createUser, { loading, error }) => {
             return (
-              <form className={classes.form}>
+              <form
+                onSubmit={(event) => handleSubmit(event, createUser)}
+                className={classes.form}
+              >
                 <FormControl margin="normal" required fullWidth>
                   <InputLabel htmlFor="username">Username</InputLabel>
                   <Input
