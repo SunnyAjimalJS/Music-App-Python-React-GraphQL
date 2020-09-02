@@ -90,7 +90,17 @@ const Register = ({ classes }) => {
       </Paper>
 
       {/* Success Dialog */}
-      <Dialog></Dialog>
+      <Dialog disableBackdropClick={true}>
+        <DialogTitle>
+          <VerifiedUserTwoTone className={classes.icon} />
+          New Account
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            User successfully created! Welcome, {username}!
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
