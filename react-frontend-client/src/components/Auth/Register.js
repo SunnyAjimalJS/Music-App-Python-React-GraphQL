@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Mutation } from "react-apollo";
 import { gql } from "apollo-boost";
 
@@ -20,6 +20,10 @@ import Gavel from "@material-ui/icons/Gavel";
 import VerifiedUserTwoTone from "@material-ui/icons/VerifiedUserTwoTone";
 
 const Register = ({ classes }) => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
