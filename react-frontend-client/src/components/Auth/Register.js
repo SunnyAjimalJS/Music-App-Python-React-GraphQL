@@ -19,13 +19,17 @@ import Slide from "@material-ui/core/Slide";
 import Gavel from "@material-ui/icons/Gavel";
 import VerifiedUserTwoTone from "@material-ui/icons/VerifiedUserTwoTone";
 
+function Transition(props) {
+  return <Slide direction="up" {...props} />;
+}
+
 const Register = ({ classes, setNewUser }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [open, setOpen] = useState(false);
 
-  const handleSubmit = async (event, createUser) => {
+  const handleSubmit = (event, createUser) => {
     event.preventDefault();
     createUser();
   };
@@ -80,12 +84,22 @@ const Register = ({ classes, setNewUser }) => {
                   fullWidth
                   variant="contained"
                   color="secondary"
-                  disabled={loading || username || email || password}
+                  disabled={
+                    loading ||
+                    !username.trim() ||
+                    !email.trim() ||
+                    !password.trim()
+                  }
                   className={classes.submit}
                 >
-                  Register
+                  {loading ? "Registering..." : "Register"}
                 </Button>
-                <Button color="primary" variant="outlined" fullWidth>
+                <Button
+                  onClick={() => setNewUser(false)}
+                  color="primary"
+                  variant="outlined"
+                  fullWidth
+                >
                   Previous user? Log in here
                 </Button>
 
@@ -98,7 +112,11 @@ const Register = ({ classes, setNewUser }) => {
       </Paper>
 
       {/* Success Dialog */}
-      <Dialog disableBackdropClick={true}>
+      <Dialog
+        open={open}
+        disableBackdropClick={true}
+        TransitionComponent={Transition}
+      >
         <DialogTitle>
           <VerifiedUserTwoTone className={classes.icon} />
           New Account
