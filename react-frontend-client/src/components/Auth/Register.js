@@ -80,6 +80,7 @@ const Register = ({ classes, setNewUser }) => {
                   fullWidth
                   variant="contained"
                   color="secondary"
+                  disabled={loading || username || email || password}
                   className={classes.submit}
                 >
                   Register
@@ -87,6 +88,9 @@ const Register = ({ classes, setNewUser }) => {
                 <Button color="primary" variant="outlined" fullWidth>
                   Previous user? Log in here
                 </Button>
+
+                {/* Error Handling */}
+                {error && <div>Error</div>}
               </form>
             );
           }}
