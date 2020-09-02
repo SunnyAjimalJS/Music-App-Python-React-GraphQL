@@ -19,15 +19,15 @@ import Slide from "@material-ui/core/Slide";
 import Gavel from "@material-ui/icons/Gavel";
 import VerifiedUserTwoTone from "@material-ui/icons/VerifiedUserTwoTone";
 
-const Register = ({ classes }) => {
+const Register = ({ classes, setNewUser }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = async (event, createUser) => {
     event.preventDefault();
-    const res = await createUser();
-    console.log({ res });
+    createUser();
   };
 
   return (
@@ -41,6 +41,10 @@ const Register = ({ classes }) => {
         <Mutation
           mutation={REGISTER_MUTATION}
           variables={{ username, email, password }}
+          onCompleted={(data) => {
+            console.log({ data });
+            setOpen(true);
+          }}
         >
           {(createUser, { loading, error }) => {
             return (
@@ -101,7 +105,11 @@ const Register = ({ classes }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button color="primary" variant="contained">
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={() => setNewUser(false)}
+          >
             Login
           </Button>
         </DialogActions>
