@@ -38,15 +38,26 @@ const Register = ({ classes }) => {
               <form className={classes.form}>
                 <FormControl margin="normal" required fullWidth>
                   <InputLabel htmlFor="username">Username</InputLabel>
-                  <Input id="username" />
+                  <Input
+                    id="username"
+                    onChange={(event) => setUsername(event.target.value)}
+                  />
                 </FormControl>
                 <FormControl margin="normal" required fullWidth>
                   <InputLabel htmlFor="email">Email</InputLabel>
-                  <Input id="email" type="email" />
+                  <Input
+                    id="email"
+                    type="email"
+                    onChange={(event) => setEmail(event.target.value)}
+                  />
                 </FormControl>
                 <FormControl margin="normal" required fullWidth>
                   <InputLabel htmlFor="password">Password</InputLabel>
-                  <Input id="password" type="password" />
+                  <Input
+                    id="password"
+                    type="password"
+                    onChange={(event) => setPassword(event.target.value)}
+                  />
                 </FormControl>
                 <Button
                   type="submit"
