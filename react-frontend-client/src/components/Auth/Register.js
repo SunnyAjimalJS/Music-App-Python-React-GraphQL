@@ -24,9 +24,10 @@ const Register = ({ classes }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event, createUser) => {
+  const handleSubmit = async (event, createUser) => {
     event.preventDefault();
-    createUser();
+    const res = await createUser();
+    console.log({ res });
   };
 
   return (
