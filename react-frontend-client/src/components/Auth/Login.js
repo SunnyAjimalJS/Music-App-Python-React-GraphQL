@@ -18,9 +18,9 @@ const Login = ({ classes, setNewUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event, createUser) => {
+  const handleSubmit = (event, tokenAuth) => {
     event.preventDefault();
-    createUser();
+    tokenAuth();
   };
 
   return (
@@ -32,13 +32,16 @@ const Login = ({ classes, setNewUser }) => {
         <Typography variant="title">Login as Existing User</Typography>
 
         <Mutation
-          mutation={REGISTER_MUTATION}
+          mutation={LOGIN_MUTATION}
           variables={{ username, password }}
+          onCompleted={(data) => {
+            console.log({ data });
+          }}
         >
-          {(createUser, { loading, error }) => {
+          {(tokenAuth, { loading, error }) => {
             return (
               <form
-                onSubmit={(event) => handleSubmit(event, createUser)}
+                onSubmit={(event) => handleSubmit(event, tokenAuth)}
                 className={classes.form}
               >
                 <FormControl margin="normal" required fullWidth>
