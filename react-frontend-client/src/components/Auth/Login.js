@@ -12,6 +12,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Button from "@material-ui/core/Button";
 import Lock from "@material-ui/icons/Lock";
 
+import Error from "../Shared/Error";
+
 const Login = ({ classes, setNewUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
