@@ -16,21 +16,22 @@ const Login = ({ classes, setNewUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleSubmit = (event, createUser) => {
+    event.preventDefault();
+    createUser();
+  };
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <Gavel />
+          <Lock />
         </Avatar>
-        <Typography variant="headline">Register</Typography>
+        <Typography variant="title">Login as Existing User</Typography>
 
         <Mutation
           mutation={REGISTER_MUTATION}
-          variables={{ username, email, password }}
-          onCompleted={(data) => {
-            console.log({ data });
-            setOpen(true);
-          }}
+          variables={{ username, password }}
         >
           {(createUser, { loading, error }) => {
             return (
@@ -46,14 +47,6 @@ const Login = ({ classes, setNewUser }) => {
                   />
                 </FormControl>
                 <FormControl margin="normal" required fullWidth>
-                  <InputLabel htmlFor="email">Email</InputLabel>
-                  <Input
-                    id="email"
-                    type="email"
-                    onChange={(event) => setEmail(event.target.value)}
-                  />
-                </FormControl>
-                <FormControl margin="normal" required fullWidth>
                   <InputLabel htmlFor="password">Password</InputLabel>
                   <Input
                     id="password"
@@ -65,24 +58,19 @@ const Login = ({ classes, setNewUser }) => {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  color="secondary"
-                  disabled={
-                    loading ||
-                    !username.trim() ||
-                    !email.trim() ||
-                    !password.trim()
-                  }
+                  color="primary"
+                  disabled={loading || !username.trim() || !password.trim()}
                   className={classes.submit}
                 >
-                  {loading ? "Registering..." : "Register"}
+                  {loading ? "Logging in..." : "Login"}
                 </Button>
                 <Button
-                  onClick={() => setNewUser(false)}
-                  color="primary"
+                  onClick={() => setNewUser(true)}
+                  color="secondary"
                   variant="outlined"
                   fullWidth
                 >
-                  Previous user? Log in here
+                  New user? Register here
                 </Button>
 
                 {/* Error Handling */}
