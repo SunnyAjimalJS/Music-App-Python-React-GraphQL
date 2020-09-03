@@ -86,6 +86,14 @@ const Login = ({ classes, setNewUser }) => {
   );
 };
 
+const LOGIN_MUTATION = gql`
+  mutation($username: String!, $password: String!) {
+    tokenAuth(username: $username, password: $password) {
+      token
+    }
+  }
+`;
+
 const styles = (theme) => ({
   root: {
     width: "auto",
