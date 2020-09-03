@@ -12,7 +12,7 @@ const Error = ({ classes, error }) => {
       className={classes.snackbar}
       message={error.message}
       action={
-        <Button color="secondary" size="small">
+        <Button onClick={() => setOpen(false)} color="secondary" size="small">
           Close
         </Button>
       }
