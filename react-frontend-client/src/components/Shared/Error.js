@@ -11,6 +11,11 @@ const Error = ({ classes, error }) => {
       open={open}
       className={classes.snackbar}
       message={error.message}
+      action={
+        <Button color="secondary" size="small">
+          Close
+        </Button>
+      }
     />
   );
 };
