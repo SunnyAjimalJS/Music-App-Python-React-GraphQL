@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Mutation } from "react-apollo";
 import { gql } from "apollo-boost";
 
@@ -13,6 +13,9 @@ import Button from "@material-ui/core/Button";
 import Lock from "@material-ui/icons/Lock";
 
 const Login = ({ classes, setNewUser }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
