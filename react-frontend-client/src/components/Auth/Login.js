@@ -18,9 +18,10 @@ const Login = ({ classes, setNewUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event, tokenAuth) => {
+  const handleSubmit = async (event, tokenAuth) => {
     event.preventDefault();
-    tokenAuth();
+    const res = await tokenAuth();
+    localStorage.setItem("authToken", res.data.tokenAuth.token);
   };
 
   return (
@@ -31,13 +32,7 @@ const Login = ({ classes, setNewUser }) => {
         </Avatar>
         <Typography variant="title">Login as Existing User</Typography>
 
-        <Mutation
-          mutation={LOGIN_MUTATION}
-          variables={{ username, password }}
-          onCompleted={(data) => {
-            console.log({ data });
-          }}
-        >
+        <Mutation mutation={LOGIN_MUTATION} variables={{ username, password }}>
           {(tokenAuth, { loading, error }) => {
             return (
               <form
