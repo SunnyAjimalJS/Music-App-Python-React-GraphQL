@@ -16,7 +16,12 @@ const client = new ApolloClient({
   },
 });
 
-const IS_LOGGED_IN_QUERY = gql``;
+const IS_LOGGED_IN_QUERY = gql`
+  query {
+    isLoggedIn @client
+  }
+`;
+
 ReactDOM.render(
   <ApolloProvider client={client}>
     <Auth />
