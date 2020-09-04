@@ -8,14 +8,22 @@ import Typography from "@material-ui/core/Typography";
 
 import { Link } from "react-router-dom";
 
-const Header = ({ classes }) => {
+const Header = ({ classes, currentUser }) => {
   return (
     <AppBar position="static" className={classes.root}>
       <Toolbar>
         {/* Title / Logo */}
         <Link to="/" className={classes.grow}>
           <RadioIcon className={classes.logo} color="secondary" />
+          <Typography variant="headline" color="secondary" noWrap>
+            ReactTracks
+          </Typography>
         </Link>
+
+        {/* Auth User Info */}
+        {currentUser && (
+          
+        )}
       </Toolbar>
     </AppBar>
   );
