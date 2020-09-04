@@ -15,8 +15,10 @@ const Root = () => (
 
       return (
         <Router>
-          <Route path="/" component={App} />
-          <Route path="/profile/:id" component={Profile} />
+          <Switch>
+            <Route path="/" component={App} />
+            <Route path="/profile/:id" component={Profile} />
+          </Switch>
         </Router>
       );
     }}
