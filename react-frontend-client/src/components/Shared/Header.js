@@ -6,10 +6,17 @@ import RadioIcon from "@material-ui/icons/RadioTwoTone";
 import FaceIcon from "@material-ui/icons/FaceTwoTone";
 import Typography from "@material-ui/core/Typography";
 
+import { Link } from "react-router-dom";
+
 const Header = ({ classes }) => {
   return (
     <AppBar position="static" className={classes.root}>
-      <Toolbar>{/* Title / Logo */}</Toolbar>
+      <Toolbar>
+        {/* Title / Logo */}
+        <Link to="/" className={classes.grow}>
+          <RadioIcon className={classes.logo} color="secondary" />
+        </Link>
+      </Toolbar>
     </AppBar>
   );
 };
