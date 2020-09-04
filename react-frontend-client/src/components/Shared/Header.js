@@ -7,6 +7,7 @@ import FaceIcon from "@material-ui/icons/FaceTwoTone";
 import Typography from "@material-ui/core/Typography";
 
 import { Link } from "react-router-dom";
+import Signout from "../Auth/Signout";
 
 const Header = ({ classes, currentUser }) => {
   return (
@@ -29,6 +30,9 @@ const Header = ({ classes, currentUser }) => {
             </Typography>
           </Link>
         )}
+
+        {/* Signout Button */}
+        <Signout />
       </Toolbar>
     </AppBar>
   );
