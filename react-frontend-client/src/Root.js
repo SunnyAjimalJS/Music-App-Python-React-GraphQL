@@ -16,7 +16,7 @@ const Root = () => (
       return (
         <Router>
           <Switch>
-            <Route path="/" component={App} />
+            <Route exact path="/" component={App} />
             <Route path="/profile/:id" component={Profile} />
           </Switch>
         </Router>
