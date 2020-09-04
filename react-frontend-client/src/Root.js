@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import withRoot from "./withRoot";
 import App from "./pages/App";
 import Profile from "./pages/Profile";
+import Header from "./components/Shared/Header";
 
 const Root = () => (
   <Query query={GET_ME_QUERY}>
@@ -15,6 +16,7 @@ const Root = () => (
 
       return (
         <Router>
+          <Header />
           <Switch>
             <Route exact path="/" component={App} />
             <Route path="/profile/:id" component={Profile} />
