@@ -10,7 +10,22 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-const TrackList = ({ classes }) => <div>TrackList</div>;
+import AudioPlayer from "../Shared/AudioPlayer";
+import LikeTrack from "./LikeTrack";
+import DeleteTrack from "./DeleteTrack";
+import UpdateTrack from "./UpdateTrack";
+
+const TrackList = ({ classes, tracks }) => (
+  <List>
+    {tracks.map((track) => (
+      <ExpansionPanel key={track.id}>
+        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <ListItem className={classes.root}></ListItem>
+        </ExpansionPanelSummary>
+      </ExpansionPanel>
+    ))}
+  </List>
+);
 
 const styles = {
   root: {
