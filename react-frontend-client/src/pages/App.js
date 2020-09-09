@@ -1,4 +1,5 @@
 import React from "react";
+import { Query } from "react-apollo";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 import SearchTracks from "../components/Track/SearchTracks";
