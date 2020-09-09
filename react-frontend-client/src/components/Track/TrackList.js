@@ -20,7 +20,10 @@ const TrackList = ({ classes, tracks }) => (
     {tracks.map((track) => (
       <ExpansionPanel key={track.id}>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <ListItem className={classes.root}></ListItem>
+          <ListItem className={classes.root}>
+            <LikeTrack />
+            <ListItemText />
+          </ListItem>
         </ExpansionPanelSummary>
       </ExpansionPanel>
     ))}
