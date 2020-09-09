@@ -6,18 +6,24 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
 const Signout = ({ classes }) => {
+  const handleSignout = (client) => {
+    localStorage.removeItem("authToken");
+  };
+
   return (
     <ApolloConsumer>
-      <Button>
-        <Typography
-          variant="body1"
-          className={classes.buttonText}
-          color="secondary"
-        >
-          SIGNOUT
-        </Typography>
-        <ExitToApp className={classes.buttonIcon} color="secondary" />
-      </Button>
+      {(client) => (
+        <Button onClick={() => handleSignout(client)}>
+          <Typography
+            variant="body1"
+            className={classes.buttonText}
+            color="secondary"
+          >
+            SIGNOUT
+          </Typography>
+          <ExitToApp className={classes.buttonIcon} color="secondary" />
+        </Button>
+      )}
     </ApolloConsumer>
   );
 };
