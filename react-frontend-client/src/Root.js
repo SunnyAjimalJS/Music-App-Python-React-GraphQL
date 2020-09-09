@@ -13,8 +13,8 @@ import Error from "./components/Shared/Error";
 const Root = () => (
   <Query query={GET_ME_QUERY}>
     {({ data, loading, error }) => {
-      if (loading) return <div>Loading..</div>;
-      if (error) return <div>Error</div>;
+      if (loading) return <Loading />;
+      if (error) return <Error error={error} />;
       const currentUser = data.me;
 
       return (
