@@ -20,6 +20,8 @@ const App = ({ classes }) => {
           {({ data, loading, error }) => {
             if (loading) return <Loading />;
             if (error) return <Error error={error} />;
+
+            return <TrackList tracks={data.tracks} />;
           }}
         </Query>
       </div>
