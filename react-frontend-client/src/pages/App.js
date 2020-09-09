@@ -7,13 +7,21 @@ import SearchTracks from "../components/Track/SearchTracks";
 import TrackList from "../components/Track/TrackList";
 import CreateTrack from "../components/Track/CreateTrack";
 
+import Loading from "../components/Shared/Loading";
+import Error from "../components/Shared/Error";
+
 const App = ({ classes }) => {
   return (
     <>
       <div className={classes.container}>
         <SearchTracks />
         <CreateTrack />
-        <Query query={GET_TRACKS_QUERY}></Query>
+        <Query query={GET_TRACKS_QUERY}>
+          {({ data, loading, error }) => {
+            if (loading) return <Loading />;
+            if (error) return <Error error={error} />;
+          }}
+        </Query>
       </div>
     </>
   );
