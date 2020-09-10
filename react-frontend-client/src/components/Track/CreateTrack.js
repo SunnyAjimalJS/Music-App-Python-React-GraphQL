@@ -27,7 +27,10 @@ const CreateTrack = ({ classes }) => {
         <form>
           <DialogTitle>Create Track</DialogTitle>
           <DialogContent>
-            <DialogContentText></DialogContentText>
+            <DialogContentText>
+              Add a Title, Description & Audio File
+            </DialogContentText>
+            <FormControl fullWidth></FormControl>
           </DialogContent>
         </form>
       </Dialog>
