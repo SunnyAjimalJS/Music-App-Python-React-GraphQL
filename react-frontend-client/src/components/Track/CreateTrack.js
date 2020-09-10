@@ -21,7 +21,16 @@ const CreateTrack = ({ classes }) => {
       <Button variant="fab" className={classes.fab} color="secondary">
         <AddIcon />
       </Button>
+
       {/* Create Track Dialog */}
+      <Dialog className={classes.dialog}>
+        <form>
+          <DialogTitle>Create Track</DialogTitle>
+          <DialogContent>
+            <DialogContentText></DialogContentText>
+          </DialogContent>
+        </form>
+      </Dialog>
     </>
   );
 };
