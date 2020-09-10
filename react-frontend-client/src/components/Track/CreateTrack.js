@@ -44,7 +44,25 @@ const CreateTrack = ({ classes }) => {
                 className={classes.textField}
               />
             </FormControl>
-            <FormControl></FormControl>
+            <FormControl>
+              <input
+                id="audio"
+                required
+                type="file"
+                className={classes.input}
+              />
+              <label htmlFor="audio">
+                <Button
+                  variant="outlined"
+                  color="inherit"
+                  component="span"
+                  className={classes.button}
+                >
+                  Audio File
+                  <LibraryMusicIcon className={classes.icon} />
+                </Button>
+              </label>
+            </FormControl>
           </DialogContent>
         </form>
       </Dialog>
