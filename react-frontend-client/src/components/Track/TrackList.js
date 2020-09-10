@@ -9,6 +9,7 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Link } from "react-router-dom";
 
 import AudioPlayer from "../Shared/AudioPlayer";
 import LikeTrack from "./LikeTrack";
@@ -22,7 +23,15 @@ const TrackList = ({ classes, tracks }) => (
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <ListItem className={classes.root}>
             <LikeTrack />
-            <ListItemText />
+            <ListItemText
+              primary={track.title}
+              secondary={
+                <Link
+                  className={classes.link}
+                  to={`/profile/${track.postedBy}`}
+                ></Link>
+              }
+            />
           </ListItem>
         </ExpansionPanelSummary>
       </ExpansionPanel>
