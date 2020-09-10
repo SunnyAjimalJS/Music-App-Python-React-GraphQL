@@ -23,7 +23,7 @@ const CreateTrack = ({ classes }) => {
       </Button>
 
       {/* Create Track Dialog */}
-      <Dialog className={classes.dialog}>
+      <Dialog open={true} className={classes.dialog}>
         <form>
           <DialogTitle>Create Track</DialogTitle>
           <DialogContent>
@@ -64,6 +64,12 @@ const CreateTrack = ({ classes }) => {
               </label>
             </FormControl>
           </DialogContent>
+          <DialogActions>
+            <Button className={classes.cancel}>Cancel</Button>
+            <Button type="submit" className={classes.save}>
+              Add Track
+            </Button>
+          </DialogActions>
         </form>
       </Dialog>
     </>
