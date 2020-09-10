@@ -41,7 +41,13 @@ const TrackList = ({ classes, tracks }) => (
             <AudioPlayer />
           </ListItem>
         </ExpansionPanelSummary>
-        <ExpansionPanelDetails></ExpansionPanelDetails>
+        <ExpansionPanelDetails className={classes.details}>
+          <Typography variant="body1">{track.description}</Typography>
+        </ExpansionPanelDetails>
+        <ExpansionPanelActions>
+          <UpdateTrack />
+          <DeleteTrack />
+        </ExpansionPanelActions>
       </ExpansionPanel>
     ))}
   </List>
