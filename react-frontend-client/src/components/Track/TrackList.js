@@ -24,16 +24,24 @@ const TrackList = ({ classes, tracks }) => (
           <ListItem className={classes.root}>
             <LikeTrack />
             <ListItemText
+              primaryTypographyProps={{
+                variant: "subheading",
+                color: "primary",
+              }}
               primary={track.title}
               secondary={
                 <Link
                   className={classes.link}
                   to={`/profile/${track.postedBy}`}
-                ></Link>
+                >
+                  {track.postedBy.username}
+                </Link>
               }
             />
+            <AudioPlayer />
           </ListItem>
         </ExpansionPanelSummary>
+        <ExpansionPanelDetails></ExpansionPanelDetails>
       </ExpansionPanel>
     ))}
   </List>
