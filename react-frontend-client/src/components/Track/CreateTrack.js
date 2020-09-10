@@ -18,7 +18,9 @@ const CreateTrack = ({ classes }) => {
   return (
     <>
       {/* Create Track Button */}
-
+      <Button variant="fab" className={classes.fab} color="secondary">
+        <AddIcon />
+      </Button>
       {/* Create Track Dialog */}
     </>
   );
