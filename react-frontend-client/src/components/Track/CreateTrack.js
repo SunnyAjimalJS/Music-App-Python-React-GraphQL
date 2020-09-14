@@ -19,12 +19,17 @@ const CreateTrack = ({ classes }) => {
   return (
     <>
       {/* Create Track Button */}
-      <Button variant="fab" className={classes.fab} color="secondary">
+      <Button
+        onClick={() => setOpen(true)}
+        variant="fab"
+        className={classes.fab}
+        color="secondary"
+      >
         <AddIcon />
       </Button>
 
       {/* Create Track Dialog */}
-      <Dialog open={true} className={classes.dialog}>
+      <Dialog open={open} className={classes.dialog}>
         <form>
           <DialogTitle>Create Track</DialogTitle>
           <DialogContent>
@@ -66,7 +71,9 @@ const CreateTrack = ({ classes }) => {
             </FormControl>
           </DialogContent>
           <DialogActions>
-            <Button className={classes.cancel}>Cancel</Button>
+            <Button onClick={() => setOpen(false)} className={classes.cancel}>
+              Cancel
+            </Button>
             <Button type="submit" className={classes.save}>
               Add Track
             </Button>
