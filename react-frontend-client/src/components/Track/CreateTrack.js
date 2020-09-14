@@ -57,6 +57,7 @@ const CreateTrack = ({ classes }) => {
                 id="audio"
                 required
                 type="file"
+                accept="audio/mp3, audio/wav"
                 className={classes.input}
               />
               <label htmlFor="audio">
