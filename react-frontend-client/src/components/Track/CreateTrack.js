@@ -41,7 +41,7 @@ const CreateTrack = ({ classes }) => {
       </Button>
 
       {/* Create Track Dialog */}
-      <Mutation>
+      <Mutation mutation={CREATE_TRACK_MUTATION}>
         {() => {
           return (
             <Dialog open={open} className={classes.dialog}>
@@ -120,6 +120,19 @@ const CreateTrack = ({ classes }) => {
     </>
   );
 };
+
+const CREATE_TRACK_MUTATION = gql`
+  mutation($title: String!, $description: String!, $url: String!) {
+    createTrack(title: $title, description: $description, url: $url) {
+      track {
+        id
+        title
+        description
+        url
+      }
+    }
+  }
+`;
 
 const styles = (theme) => ({
   container: {
