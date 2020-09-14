@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { Mutation } from "react-apollo";
+import { gql } from "apollo-boost";
+
 import withStyles from "@material-ui/core/styles/withStyles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -38,73 +41,75 @@ const CreateTrack = ({ classes }) => {
       </Button>
 
       {/* Create Track Dialog */}
-      <Dialog open={open} className={classes.dialog}>
-        <form>
-          <DialogTitle>Create Track</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Add a Title, Description & Audio File
-            </DialogContentText>
-            <FormControl fullWidth>
-              <TextField
-                label="Title"
-                placeholder="Add Title"
-                onChange={(event) => setTitle(event.target.value)}
-                className={classes.textField}
-              />
-            </FormControl>
-            <FormControl fullWidth>
-              <TextField
-                multiline
-                rows="2"
-                label="Description"
-                onChange={(event) => setDescription(event.target.value)}
-                placeholder="Add Description"
-                className={classes.textField}
-              />
-            </FormControl>
-            <FormControl>
-              {/* Input handling  */}
-              <input
-                id="audio"
-                required
-                type="file"
-                accept="audio/mp3,audio/wav"
-                className={classes.input}
-                onChange={handleAudioChange}
-              />
+      <Mutation>
+        <Dialog open={open} className={classes.dialog}>
+          <form>
+            <DialogTitle>Create Track</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                Add a Title, Description & Audio File
+              </DialogContentText>
+              <FormControl fullWidth>
+                <TextField
+                  label="Title"
+                  placeholder="Add Title"
+                  onChange={(event) => setTitle(event.target.value)}
+                  className={classes.textField}
+                />
+              </FormControl>
+              <FormControl fullWidth>
+                <TextField
+                  multiline
+                  rows="2"
+                  label="Description"
+                  onChange={(event) => setDescription(event.target.value)}
+                  placeholder="Add Description"
+                  className={classes.textField}
+                />
+              </FormControl>
+              <FormControl>
+                {/* Input handling  */}
+                <input
+                  id="audio"
+                  required
+                  type="file"
+                  accept="audio/mp3,audio/wav"
+                  className={classes.input}
+                  onChange={handleAudioChange}
+                />
 
-              {/* Add Audio File Button */}
-              <label htmlFor="audio">
-                <Button
-                  variant="outlined"
-                  color={file ? "secondary" : "inherit"}
-                  component="span"
-                  className={classes.button}
-                >
-                  Audio File
-                  <LibraryMusicIcon className={classes.icon} />
-                </Button>
+                {/* Add Audio File Button */}
+                <label htmlFor="audio">
+                  <Button
+                    variant="outlined"
+                    color={file ? "secondary" : "inherit"}
+                    component="span"
+                    className={classes.button}
+                  >
+                    Audio File
+                    <LibraryMusicIcon className={classes.icon} />
+                  </Button>
 
-                {/* Text to display the uploaded file name */}
-                {file && file.name}
-              </label>
-            </FormControl>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => setOpen(false)} className={classes.cancel}>
-              Cancel
-            </Button>
-            <Button
-              disabled={!title.trim() || !description.trim() || !file}
-              type="submit"
-              className={classes.save}
-            >
-              Add Track
-            </Button>
-          </DialogActions>
-        </form>
-      </Dialog>
+                  {/* Text to display the uploaded file name */}
+                  {file && file.name}
+                </label>
+              </FormControl>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => setOpen(false)} className={classes.cancel}>
+                Cancel
+              </Button>
+              <Button
+                disabled={!title.trim() || !description.trim() || !file}
+                type="submit"
+                className={classes.save}
+              >
+                Add Track
+              </Button>
+            </DialogActions>
+          </form>
+        </Dialog>
+      </Mutation>
     </>
   );
 };
