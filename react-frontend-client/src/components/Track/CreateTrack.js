@@ -17,6 +17,8 @@ import AddIcon from "@material-ui/icons/Add";
 import ClearIcon from "@material-ui/icons/Clear";
 import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 
+import Error from "../Shared/Error";
+
 const CreateTrack = ({ classes }) => {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
@@ -27,6 +29,8 @@ const CreateTrack = ({ classes }) => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
   };
+
+  const handleSubmit = () => {};
 
   return (
     <>
@@ -47,7 +51,7 @@ const CreateTrack = ({ classes }) => {
 
           return (
             <Dialog open={open} className={classes.dialog}>
-              <form>
+              <form onSubmit={(event) => handleSubmit(event, createTrack)}>
                 <DialogTitle>Create Track</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
