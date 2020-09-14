@@ -42,7 +42,9 @@ const CreateTrack = ({ classes }) => {
 
       {/* Create Track Dialog */}
       <Mutation mutation={CREATE_TRACK_MUTATION}>
-        {() => {
+        {(createTrack, { loading, error }) => {
+          if (error) return <Error error={error} />;
+
           return (
             <Dialog open={open} className={classes.dialog}>
               <form>
