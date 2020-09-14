@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Mutation } from "react-apollo";
 import { gql } from "apollo-boost";
+import axios from "axios";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 import Dialog from "@material-ui/core/Dialog";
@@ -30,17 +31,26 @@ const CreateTrack = ({ classes }) => {
     setFile(selectedFile);
   };
 
-  const handleAudioUpload = () => {
+  const handleAudioUpload = async () => {
+    // Metadata for Cloudinary request:
     const data = new FormData();
     data.append("file", file);
     data.append("resource_type", "raw");
     data.append("upload_preset", "react-python-tracks");
     data.append("cloud_name", "digensvyy");
+    // Request:
+    const res = await axios.post(
+      "https://api.cloudinary.com/v1_1/digensvyy/raw/upload",
+      data
+    );
+    return res.data.url;
   };
 
-  const handleSubmit = (event, createTrack) => {
+  const handleSubmit = async (event, createTrack) => {
     event.preventDefault();
     // upload the audio file and get returned url from API
+    const uploadedUrl = await handleAudioUpload();
+    createTrack({ variables: { title, description, url: uploadedUrl } });
   };
 
   return (
