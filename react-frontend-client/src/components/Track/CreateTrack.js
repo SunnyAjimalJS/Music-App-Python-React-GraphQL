@@ -45,6 +45,8 @@ const CreateTrack = ({ classes }) => {
             </FormControl>
             <FormControl fullWidth>
               <TextField
+                multiline
+                rows="2"
                 label="Description"
                 placeholder="Add Description"
                 className={classes.textField}
