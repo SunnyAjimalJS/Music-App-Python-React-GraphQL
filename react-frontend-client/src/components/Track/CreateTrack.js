@@ -16,6 +16,10 @@ import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 
 const CreateTrack = ({ classes }) => {
   const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [file, setFile] = useState("");
+
   return (
     <>
       {/* Create Track Button */}
@@ -40,6 +44,7 @@ const CreateTrack = ({ classes }) => {
               <TextField
                 label="Title"
                 placeholder="Add Title"
+                onChange={(event) => setTitle(event.target.value)}
                 className={classes.textField}
               />
             </FormControl>
@@ -48,6 +53,7 @@ const CreateTrack = ({ classes }) => {
                 multiline
                 rows="2"
                 label="Description"
+                onChange={(event) => setDescription(event.target.value)}
                 placeholder="Add Description"
                 className={classes.textField}
               />
@@ -66,6 +72,7 @@ const CreateTrack = ({ classes }) => {
                   color="inherit"
                   component="span"
                   className={classes.button}
+                  onChange={handleAudioChange}
                 >
                   Audio File
                   <LibraryMusicIcon className={classes.icon} />
