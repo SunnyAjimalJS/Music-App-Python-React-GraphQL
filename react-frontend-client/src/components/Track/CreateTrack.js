@@ -30,7 +30,18 @@ const CreateTrack = ({ classes }) => {
     setFile(selectedFile);
   };
 
-  const handleSubmit = () => {};
+  const handleAudioUpload = () => {
+    const data = new FormData();
+    data.append("file", file);
+    data.append("resource_type", "raw");
+    data.append("upload_preset", "react-python-tracks");
+    data.append("cloud_name", "digensvyy");
+  };
+
+  const handleSubmit = (event, createTrack) => {
+    event.preventDefault();
+    // upload the audio file and get returned url from API
+  };
 
   return (
     <>
