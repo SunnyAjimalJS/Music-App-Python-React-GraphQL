@@ -25,7 +25,7 @@ const CreateTrack = ({ classes }) => {
         className={classes.fab}
         color="secondary"
       >
-        <AddIcon />
+        {open ? <ClearIcon /> : <AddIcon />}
       </Button>
 
       {/* Create Track Dialog */}
