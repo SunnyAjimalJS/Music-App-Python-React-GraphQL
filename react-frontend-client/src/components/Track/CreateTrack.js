@@ -25,6 +25,7 @@ const CreateTrack = ({ classes }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   const handleAudioChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -48,6 +49,7 @@ const CreateTrack = ({ classes }) => {
 
   const handleSubmit = async (event, createTrack) => {
     event.preventDefault();
+    setSubmitting(true);
     // upload the audio file and get returned url from API
     const uploadedUrl = await handleAudioUpload();
     createTrack({ variables: { title, description, url: uploadedUrl } });
@@ -66,7 +68,13 @@ const CreateTrack = ({ classes }) => {
       </Button>
 
       {/* Create Track Dialog */}
-      <Mutation mutation={CREATE_TRACK_MUTATION}>
+      <Mutation
+        mutation={CREATE_TRACK_MUTATION}
+        onCompleted={(data) => {
+          setSubmitting(false);
+          setOpen(false);
+        }}
+      >
         {(createTrack, { loading, error }) => {
           if (error) return <Error error={error} />;
 
