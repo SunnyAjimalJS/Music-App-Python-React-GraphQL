@@ -20,6 +20,11 @@ const CreateTrack = ({ classes }) => {
   const [description, setDescription] = useState("");
   const [file, setFile] = useState("");
 
+  const handleAudioChange = (event) => {
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
+  };
+
   return (
     <>
       {/* Create Track Button */}
@@ -59,24 +64,30 @@ const CreateTrack = ({ classes }) => {
               />
             </FormControl>
             <FormControl>
+              {/* Input handling  */}
               <input
                 id="audio"
                 required
                 type="file"
-                accept="audio/mp3, audio/wav"
+                accept="audio/mp3,audio/wav"
                 className={classes.input}
+                onChange={handleAudioChange}
               />
+
+              {/* Add Audio File Button */}
               <label htmlFor="audio">
                 <Button
                   variant="outlined"
-                  color="inherit"
+                  color={file ? "secondary" : "inherit"}
                   component="span"
                   className={classes.button}
-                  onChange={handleAudioChange}
                 >
                   Audio File
                   <LibraryMusicIcon className={classes.icon} />
                 </Button>
+
+                {/* Text to display the uploaded file name */}
+                {file && file.name}
               </label>
             </FormControl>
           </DialogContent>
@@ -84,7 +95,11 @@ const CreateTrack = ({ classes }) => {
             <Button onClick={() => setOpen(false)} className={classes.cancel}>
               Cancel
             </Button>
-            <Button type="submit" className={classes.save}>
+            <Button
+              disabled={!title.trim() || !description.trim() || !file}
+              type="submit"
+              className={classes.save}
+            >
               Add Track
             </Button>
           </DialogActions>
