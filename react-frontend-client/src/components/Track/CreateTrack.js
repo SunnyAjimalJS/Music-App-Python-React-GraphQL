@@ -139,13 +139,19 @@ const CreateTrack = ({ classes }) => {
                 </DialogContent>
                 <DialogActions>
                   <Button
+                    disabled={submitting}
                     onClick={() => setOpen(false)}
                     className={classes.cancel}
                   >
                     Cancel
                   </Button>
                   <Button
-                    disabled={!title.trim() || !description.trim() || !file}
+                    disabled={
+                      submitting ||
+                      !title.trim() ||
+                      !description.trim() ||
+                      !file
+                    }
                     type="submit"
                     className={classes.save}
                   >
