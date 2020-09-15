@@ -80,7 +80,7 @@ const CreateTrack = ({ classes }) => {
           setSubmitting(false);
           setOpen(false);
         }}
-        refetchQueries={() => [{}]}
+        refetchQueries={() => [{ query: GET_TRACKS_QUERY }]}
       >
         {(createTrack, { loading, error }) => {
           if (error) return <Error error={error} />;
