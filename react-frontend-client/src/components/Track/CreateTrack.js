@@ -46,7 +46,10 @@ const CreateTrack = ({ classes }) => {
         data
       );
       return res.data.url;
-    } catch (err) {}
+    } catch (err) {
+      console.error("Error uploading file", err);
+      setSubmitting(false);
+    }
   };
 
   const handleSubmit = async (event, createTrack) => {
