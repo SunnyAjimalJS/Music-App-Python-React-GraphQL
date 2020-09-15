@@ -47,7 +47,7 @@ const CreateTrack = ({ classes }) => {
       );
       return res.data.url;
     } catch (err) {
-      console.error("Error uploading file", err);
+      console.error("Error uploading file!", err);
       setSubmitting(false);
     }
   };
@@ -113,7 +113,7 @@ const CreateTrack = ({ classes }) => {
                     {/* Input handling  */}
                     <input
                       id="audio"
-                      required
+                      required={true}
                       type="file"
                       accept="audio/mp3,audio/wav"
                       className={classes.input}
@@ -155,7 +155,11 @@ const CreateTrack = ({ classes }) => {
                     type="submit"
                     className={classes.save}
                   >
-                    Add Track
+                    {submitting ? (
+                      <CircularProgress className={classes.save} size={24} />
+                    ) : (
+                      "Add Track"
+                    )}
                   </Button>
                 </DialogActions>
               </form>
