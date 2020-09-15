@@ -33,18 +33,20 @@ const CreateTrack = ({ classes }) => {
   };
 
   const handleAudioUpload = async () => {
-    // Metadata for Cloudinary request:
-    const data = new FormData();
-    data.append("file", file);
-    data.append("resource_type", "raw");
-    data.append("upload_preset", "react-python-tracks");
-    data.append("cloud_name", "digensvyy");
-    // Request:
-    const res = await axios.post(
-      "https://api.cloudinary.com/v1_1/digensvyy/raw/upload",
-      data
-    );
-    return res.data.url;
+    try {
+      // Metadata for Cloudinary request:
+      const data = new FormData();
+      data.append("file", file);
+      data.append("resource_type", "raw");
+      data.append("upload_preset", "react-python-tracks");
+      data.append("cloud_name", "digensvyy");
+      // Request:
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/digensvyy/raw/upload",
+        data
+      );
+      return res.data.url;
+    } catch (err) {}
   };
 
   const handleSubmit = async (event, createTrack) => {
