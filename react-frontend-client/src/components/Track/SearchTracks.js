@@ -1,4 +1,7 @@
 import React from "react";
+import { ApolloConsumer } from "react-apollo";
+import { gql } from "apollo-boost";
+
 import withStyles from "@material-ui/core/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
 import ClearIcon from "@material-ui/icons/Clear";
@@ -10,17 +13,23 @@ const SearchTracks = ({ classes }) => {
   return (
     <form>
       <Paper className={classes.root} elevate={1}>
+        {/* Clear button */}
         <IconButton>
           <ClearIcon />
         </IconButton>
+        {/* Search field  */}
+        <TextField
+          fullWidth
+          placeholder="Search All Tracks"
+          InputProps={{
+            disableUnderline: true,
+          }}
+        />
+        {/* Search Button */}
+        <IconButton type="submit">
+          <SearchIcon />
+        </IconButton>
       </Paper>
-      <TextField
-        fullWidth
-        placeholder="Search All Tracks"
-        InputProps={{
-          disableUnderline: true,
-        }}
-      />
     </form>
   );
 };
