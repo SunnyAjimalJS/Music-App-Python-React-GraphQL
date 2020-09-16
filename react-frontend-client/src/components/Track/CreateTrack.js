@@ -27,12 +27,17 @@ const CreateTrack = ({ classes }) => {
   const [description, setDescription] = useState("");
   const [file, setFile] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [fileError, setFileError] = useState("");
 
   const handleAudioChange = (event) => {
     const selectedFile = event.target.files[0];
     const fileSizeLimit = 10000000; //10 million bytes - 10mb
-    if (selectedFile && fileSizeLimit > selectedFile.size)
+    if (selectedFile && fileSizeLimit > selectedFile.size) {
+      setFileError(`${selectedFile.name}: File size is too large!`);
+    } else {
       setFile(selectedFile);
+      setFileError("");
+    }
   };
 
   const handleAudioUpload = async () => {
