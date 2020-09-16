@@ -30,6 +30,7 @@ const CreateTrack = ({ classes }) => {
 
   const handleAudioChange = (event) => {
     const selectedFile = event.target.files[0];
+    const fileSizeLimit = 10000000; //10 million bytes - 10mb
     setFile(selectedFile);
   };
 
