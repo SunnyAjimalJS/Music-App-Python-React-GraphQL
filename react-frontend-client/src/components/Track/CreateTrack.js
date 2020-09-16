@@ -98,6 +98,7 @@ const CreateTrack = ({ classes }) => {
                       label="Title"
                       placeholder="Add Title"
                       onChange={(event) => setTitle(event.target.value)}
+                      value={title}
                       className={classes.textField}
                     />
                   </FormControl>
@@ -107,6 +108,7 @@ const CreateTrack = ({ classes }) => {
                       rows="2"
                       label="Description"
                       onChange={(event) => setDescription(event.target.value)}
+                      value={description}
                       placeholder="Add Description"
                       className={classes.textField}
                     />
