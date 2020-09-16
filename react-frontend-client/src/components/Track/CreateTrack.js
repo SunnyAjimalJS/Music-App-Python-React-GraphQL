@@ -101,7 +101,7 @@ const CreateTrack = ({ classes }) => {
                 <DialogTitle>Create Track</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
-                    Add a Title, Description & Audio File
+                    Add a Title, Description & Audio File (Must be under 10MB)
                   </DialogContentText>
                   <FormControl fullWidth>
                     <TextField
