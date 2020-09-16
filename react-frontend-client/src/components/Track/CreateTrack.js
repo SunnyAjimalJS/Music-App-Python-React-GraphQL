@@ -123,8 +123,9 @@ const CreateTrack = ({ classes }) => {
                       className={classes.textField}
                     />
                   </FormControl>
-                  <FormControl>
-                    {/* Input handling  */}
+
+                  {/* Input handling  */}
+                  <FormControl error={Boolean(fileError)}>
                     <input
                       id="audio"
                       required={true}
@@ -149,6 +150,7 @@ const CreateTrack = ({ classes }) => {
                       {/* Text to display the uploaded file name */}
                       {file && file.name}
                     </label>
+                    <FormHelperText>{fileError}</FormHelperText>
                   </FormControl>
                 </DialogContent>
                 <DialogActions>
