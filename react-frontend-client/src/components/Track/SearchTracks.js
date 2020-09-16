@@ -10,27 +10,33 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 
 const SearchTracks = ({ classes }) => {
+  const handleSubmit = (event, client) => {};
+
   return (
-    <form>
-      <Paper className={classes.root} elevate={1}>
-        {/* Clear button */}
-        <IconButton>
-          <ClearIcon />
-        </IconButton>
-        {/* Search field  */}
-        <TextField
-          fullWidth
-          placeholder="Search All Tracks"
-          InputProps={{
-            disableUnderline: true,
-          }}
-        />
-        {/* Search Button */}
-        <IconButton type="submit">
-          <SearchIcon />
-        </IconButton>
-      </Paper>
-    </form>
+    <ApolloConsumer>
+      {(client) => (
+        <form onSubmit={(event) => handleSubmit(event, client)}>
+          <Paper className={classes.root} elevate={1}>
+            {/* Clear button */}
+            <IconButton>
+              <ClearIcon />
+            </IconButton>
+            {/* Search field  */}
+            <TextField
+              fullWidth
+              placeholder="Search All Tracks"
+              InputProps={{
+                disableUnderline: true,
+              }}
+            />
+            {/* Search Button */}
+            <IconButton type="submit">
+              <SearchIcon />
+            </IconButton>
+          </Paper>
+        </form>
+      )}
+    </ApolloConsumer>
   );
 };
 
