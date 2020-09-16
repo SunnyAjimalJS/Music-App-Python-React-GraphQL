@@ -79,6 +79,9 @@ const CreateTrack = ({ classes }) => {
         onCompleted={(data) => {
           setSubmitting(false);
           setOpen(false);
+          setTitle("");
+          setDescription("");
+          setFile("");
         }}
         refetchQueries={() => [{ query: GET_TRACKS_QUERY }]}
       >
