@@ -14,6 +14,13 @@ const SearchTracks = ({ classes }) => {
           <ClearIcon />
         </IconButton>
       </Paper>
+      <TextField
+        fullWidth
+        placeholder="Search All Tracks"
+        InputProps={{
+          disableUnderline: true,
+        }}
+      />
     </form>
   );
 };
