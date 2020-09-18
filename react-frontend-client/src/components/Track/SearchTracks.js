@@ -9,7 +9,7 @@ import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 
-const SearchTracks = ({ classes }) => {
+const SearchTracks = ({ classes, setSearchResults }) => {
   const [search, setSearch] = useState("");
 
   const handleSubmit = async (event, client) => {
@@ -18,7 +18,7 @@ const SearchTracks = ({ classes }) => {
       query: SEARCH_TRACKS_QUERY,
       variables: { search },
     });
-    console.log({ res });
+    setSearchResults(res.data.tracks);
   };
 
   return (
