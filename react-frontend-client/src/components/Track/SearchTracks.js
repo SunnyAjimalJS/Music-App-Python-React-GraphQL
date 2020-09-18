@@ -10,7 +10,9 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 
 const SearchTracks = ({ classes }) => {
-  const handleSubmit = (event, client) => {};
+  const handleSubmit = (event, client) => {
+    event.preventDefault();
+  };
 
   return (
     <ApolloConsumer>
@@ -39,6 +41,8 @@ const SearchTracks = ({ classes }) => {
     </ApolloConsumer>
   );
 };
+
+const SEARCH_TRACKS_QUERY = gql``;
 
 const styles = (theme) => ({
   root: {
