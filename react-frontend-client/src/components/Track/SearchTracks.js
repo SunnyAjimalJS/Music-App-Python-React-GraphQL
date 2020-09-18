@@ -12,12 +12,13 @@ import SearchIcon from "@material-ui/icons/Search";
 const SearchTracks = ({ classes }) => {
   const [search, setSearch] = useState("");
 
-  const handleSubmit = (event, client) => {
+  const handleSubmit = async (event, client) => {
     event.preventDefault();
-    client.query({
+    const res = await client.query({
       query: SEARCH_TRACKS_QUERY,
       variables: { search },
     });
+    console.log({ res });
   };
 
   return (
@@ -51,7 +52,7 @@ const SearchTracks = ({ classes }) => {
 
 const SEARCH_TRACKS_QUERY = gql`
   query($search: String) {
-    tracks {
+    tracks(search: $search) {
       id
       title
       description
