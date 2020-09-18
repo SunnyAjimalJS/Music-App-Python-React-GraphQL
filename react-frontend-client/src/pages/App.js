@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -11,10 +11,12 @@ import Loading from "../components/Shared/Loading";
 import Error from "../components/Shared/Error";
 
 const App = ({ classes }) => {
+  const [searchResults, setSearchResults] = useState([]);
+
   return (
     <>
       <div className={classes.container}>
-        <SearchTracks />
+        <SearchTracks setSearchResults={setSearchResults} />
         <CreateTrack />
         <Query query={GET_TRACKS_QUERY}>
           {({ data, loading, error }) => {
