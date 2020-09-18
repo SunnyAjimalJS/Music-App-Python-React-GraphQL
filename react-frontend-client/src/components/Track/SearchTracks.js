@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ApolloConsumer } from "react-apollo";
 import { gql } from "apollo-boost";
 
@@ -10,8 +10,14 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 
 const SearchTracks = ({ classes }) => {
+  const [search, setSearch] = useState("");
+
   const handleSubmit = (event, client) => {
     event.preventDefault();
+    client.query({
+      query: SEARCH_TRACKS_QUERY,
+      variables: { search },
+    });
   };
 
   return (
@@ -30,6 +36,7 @@ const SearchTracks = ({ classes }) => {
               InputProps={{
                 disableUnderline: true,
               }}
+              onChange={(event) => setSearch(event.target.value)}
             />
             {/* Search Button */}
             <IconButton type="submit">
