@@ -42,7 +42,23 @@ const SearchTracks = ({ classes }) => {
   );
 };
 
-const SEARCH_TRACKS_QUERY = gql``;
+const SEARCH_TRACKS_QUERY = gql`
+  query($search: String) {
+    tracks {
+      id
+      title
+      description
+      url
+      likes {
+        id
+      }
+      postedBy {
+        id
+        username
+      }
+    }
+  }
+`;
 
 const styles = (theme) => ({
   root: {
