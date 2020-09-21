@@ -21,7 +21,7 @@ const Root = () => (
 
       return (
         <Router>
-          <UserContext.Provider>
+          <UserContext.Provider value={currentUser}>
             <Header currentUser={currentUser} />
             <Switch>
               <Route exact path="/" component={App} />
