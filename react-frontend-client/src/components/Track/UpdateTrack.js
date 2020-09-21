@@ -70,15 +70,10 @@ const UpdateTrack = ({ classes, track }) => {
 
   return (
     <>
-      {/* Create Track Button */}
-      <Button
-        onClick={() => setOpen(true)}
-        variant="fab"
-        className={classes.fab}
-        color="secondary"
-      >
-        {open ? <ClearIcon /> : <AddIcon />}
-      </Button>
+      {/* Update Track Button */}
+      <IconButton onClick={() => setOpen(true)}>
+        <EditIcon />
+      </IconButton>
 
       {/* Create Track Dialog */}
       <Mutation
