@@ -93,7 +93,7 @@ const UpdateTrack = ({ classes, track }) => {
           return (
             <Dialog open={open} className={classes.dialog}>
               <form onSubmit={(event) => handleSubmit(event, updateTrack)}>
-                <DialogTitle>Create Track</DialogTitle>
+                <DialogTitle>Update Track</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
                     Add a Title, Description & Audio File (Must be under 10MB)
@@ -169,7 +169,7 @@ const UpdateTrack = ({ classes, track }) => {
                     {submitting ? (
                       <CircularProgress className={classes.save} size={24} />
                     ) : (
-                      "Add Track"
+                      "Update Track"
                     )}
                   </Button>
                 </DialogActions>
@@ -181,6 +181,12 @@ const UpdateTrack = ({ classes, track }) => {
     </>
   );
 };
+
+const UPDATE_TRACK_MUTATION = gql`
+  mutation($trackId: Int!, $title: String, $url: String, $description: String) {
+    
+  }
+`;
 
 const styles = (theme) => ({
   container: {
