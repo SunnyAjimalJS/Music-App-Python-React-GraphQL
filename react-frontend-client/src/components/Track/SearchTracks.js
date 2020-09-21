@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { ApolloConsumer } from "react-apollo";
 import { gql } from "apollo-boost";
 
@@ -11,10 +11,12 @@ import SearchIcon from "@material-ui/icons/Search";
 
 const SearchTracks = ({ classes, setSearchResults }) => {
   const [search, setSearch] = useState("");
+  const inputEl = useRef();
 
   const clearSearchInput = () => {
     setSearchResults([]);
     setSearch("");
+    inputEl.current.focus();
   };
 
   const handleSubmit = async (event, client) => {
@@ -44,8 +46,8 @@ const SearchTracks = ({ classes, setSearchResults }) => {
               }}
               onChange={(event) => setSearch(event.target.value)}
               value={search}
+              inputRef={inputEl}
             />
-
             {/* Search Button */}
             <IconButton type="submit">
               <SearchIcon />
