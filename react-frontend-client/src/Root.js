@@ -21,13 +21,13 @@ const Root = () => (
 
       return (
         <Router>
-          <>
+          <UserContext.Provider>
             <Header currentUser={currentUser} />
             <Switch>
               <Route exact path="/" component={App} />
               <Route path="/profile/:id" component={Profile} />
             </Switch>
-          </>
+          </UserContext.Provider>
         </Router>
       );
     }}
