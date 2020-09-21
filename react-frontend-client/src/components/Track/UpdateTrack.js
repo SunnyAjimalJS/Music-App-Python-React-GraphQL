@@ -92,7 +92,7 @@ const UpdateTrack = ({ classes, track }) => {
 
           return (
             <Dialog open={open} className={classes.dialog}>
-              <form onSubmit={(event) => handleSubmit(event, createTrack)}>
+              <form onSubmit={(event) => handleSubmit(event, updateTrack)}>
                 <DialogTitle>Create Track</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
