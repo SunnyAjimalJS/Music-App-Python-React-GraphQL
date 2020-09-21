@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Mutation } from "react-apollo";
 import { gql } from "apollo-boost";
 import axios from "axios";
@@ -23,12 +23,15 @@ import { UserContext } from "../../Root";
 import Error from "../Shared/Error";
 
 const UpdateTrack = ({ classes, track }) => {
+  const currentUser = useContext(UserContext);
+
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState(track.title);
   const [description, setDescription] = useState(track.description);
   const [file, setFile] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [fileError, setFileError] = useState("");
+  console.log({ currentUser });
 
   const handleAudioChange = (event) => {
     const selectedFile = event.target.files[0];
