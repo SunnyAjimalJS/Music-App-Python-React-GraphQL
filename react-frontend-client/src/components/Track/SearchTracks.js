@@ -43,6 +43,7 @@ const SearchTracks = ({ classes, setSearchResults }) => {
                 disableUnderline: true,
               }}
               onChange={(event) => setSearch(event.target.value)}
+              value={search}
             />
 
             {/* Search Button */}
