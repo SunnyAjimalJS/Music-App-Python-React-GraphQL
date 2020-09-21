@@ -60,12 +60,12 @@ const UpdateTrack = ({ classes, track }) => {
     }
   };
 
-  const handleSubmit = async (event, createTrack) => {
+  const handleSubmit = async (event, updateTrack) => {
     event.preventDefault();
     setSubmitting(true);
     // upload the audio file and get returned url from API
     const uploadedUrl = await handleAudioUpload();
-    createTrack({ variables: { title, description, url: uploadedUrl } });
+    updateTrack({ variables: { title, description, url: uploadedUrl } });
   };
 
   return (
