@@ -65,12 +65,14 @@ const UpdateTrack = ({ classes, track }) => {
     setSubmitting(true);
     // upload the audio file and get returned url from API
     const uploadedUrl = await handleAudioUpload();
-    updateTrack({ variables: { title, description, url: uploadedUrl } });
+    updateTrack({
+      variables: { trackId: track.id, title, description, url: uploadedUrl },
+    });
   };
 
   return (
     <>
-      {/* Update Track Button */}
+      {/* Update Track Button with Pencil/Edit Icon*/}
       <IconButton onClick={() => setOpen(true)}>
         <EditIcon />
       </IconButton>
@@ -184,7 +186,26 @@ const UpdateTrack = ({ classes, track }) => {
 
 const UPDATE_TRACK_MUTATION = gql`
   mutation($trackId: Int!, $title: String, $url: String, $description: String) {
-    
+    updateTrack(
+      trackId: $trackId
+      title: $title
+      url: $url
+      description: $description
+    ) {
+      track {
+        id
+        title
+        description
+        url
+        likes {
+          id
+        }
+        postedBy {
+          id
+          username
+        }
+      }
+    }
   }
 `;
 
