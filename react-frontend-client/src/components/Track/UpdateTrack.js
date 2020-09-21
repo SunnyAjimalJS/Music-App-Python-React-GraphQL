@@ -23,8 +23,8 @@ import Error from "../Shared/Error";
 
 const UpdateTrack = ({ classes, track }) => {
   const [open, setOpen] = useState(false);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState(track.title);
+  const [description, setDescription] = useState(track.description);
   const [file, setFile] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [fileError, setFileError] = useState("");
