@@ -75,9 +75,9 @@ const UpdateTrack = ({ classes, track }) => {
         <EditIcon />
       </IconButton>
 
-      {/* Create Track Dialog */}
+      {/* Update Track Dialog */}
       <Mutation
-        mutation={CREATE_TRACK_MUTATION}
+        mutation={UPDATE_TRACK_MUTATION}
         onCompleted={(data) => {
           setSubmitting(false);
           setOpen(false);
@@ -85,9 +85,9 @@ const UpdateTrack = ({ classes, track }) => {
           setDescription("");
           setFile("");
         }}
-        refetchQueries={() => [{ query: GET_TRACKS_QUERY }]}
+        // refetchQueries={() => [{ query: GET_TRACKS_QUERY }]}
       >
-        {(createTrack, { loading, error }) => {
+        {(updateTrack, { loading, error }) => {
           if (error) return <Error error={error} />;
 
           return (
