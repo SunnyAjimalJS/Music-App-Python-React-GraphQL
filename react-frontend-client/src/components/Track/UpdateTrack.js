@@ -76,116 +76,118 @@ const UpdateTrack = ({ classes, track }) => {
   };
 
   return (
-    <>
-      {/* Update Track Button with Pencil/Edit Icon*/}
-      <IconButton onClick={() => setOpen(true)}>
-        <EditIcon />
-      </IconButton>
+    isCurrentUser && (
+      <>
+        {/* Update Track Button with Pencil/Edit Icon*/}
+        <IconButton onClick={() => setOpen(true)}>
+          <EditIcon />
+        </IconButton>
 
-      {/* Update Track Dialog */}
-      <Mutation
-        mutation={UPDATE_TRACK_MUTATION}
-        onCompleted={(data) => {
-          setSubmitting(false);
-          setOpen(false);
-          setTitle("");
-          setDescription("");
-          setFile("");
-        }}
-        // refetchQueries={() => [{ query: GET_TRACKS_QUERY }]}
-      >
-        {(updateTrack, { loading, error }) => {
-          if (error) return <Error error={error} />;
+        {/* Update Track Dialog */}
+        <Mutation
+          mutation={UPDATE_TRACK_MUTATION}
+          onCompleted={(data) => {
+            setSubmitting(false);
+            setOpen(false);
+            setTitle("");
+            setDescription("");
+            setFile("");
+          }}
+          // refetchQueries={() => [{ query: GET_TRACKS_QUERY }]}
+        >
+          {(updateTrack, { loading, error }) => {
+            if (error) return <Error error={error} />;
 
-          return (
-            <Dialog open={open} className={classes.dialog}>
-              <form onSubmit={(event) => handleSubmit(event, updateTrack)}>
-                <DialogTitle>Update Track</DialogTitle>
-                <DialogContent>
-                  <DialogContentText>
-                    Add a Title, Description & Audio File (Must be under 10MB)
-                  </DialogContentText>
-                  <FormControl fullWidth>
-                    <TextField
-                      label="Title"
-                      placeholder="Add Title"
-                      onChange={(event) => setTitle(event.target.value)}
-                      value={title}
-                      className={classes.textField}
-                    />
-                  </FormControl>
-                  <FormControl fullWidth>
-                    <TextField
-                      multiline
-                      rows="2"
-                      label="Description"
-                      onChange={(event) => setDescription(event.target.value)}
-                      value={description}
-                      placeholder="Add Description"
-                      className={classes.textField}
-                    />
-                  </FormControl>
+            return (
+              <Dialog open={open} className={classes.dialog}>
+                <form onSubmit={(event) => handleSubmit(event, updateTrack)}>
+                  <DialogTitle>Update Track</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText>
+                      Add a Title, Description & Audio File (Must be under 10MB)
+                    </DialogContentText>
+                    <FormControl fullWidth>
+                      <TextField
+                        label="Title"
+                        placeholder="Add Title"
+                        onChange={(event) => setTitle(event.target.value)}
+                        value={title}
+                        className={classes.textField}
+                      />
+                    </FormControl>
+                    <FormControl fullWidth>
+                      <TextField
+                        multiline
+                        rows="2"
+                        label="Description"
+                        onChange={(event) => setDescription(event.target.value)}
+                        value={description}
+                        placeholder="Add Description"
+                        className={classes.textField}
+                      />
+                    </FormControl>
 
-                  {/* Input handling  */}
-                  <FormControl error={Boolean(fileError)}>
-                    <input
-                      id="audio"
-                      required={true}
-                      type="file"
-                      accept="audio/mp3,audio/wav"
-                      className={classes.input}
-                      onChange={handleAudioChange}
-                    />
+                    {/* Input handling  */}
+                    <FormControl error={Boolean(fileError)}>
+                      <input
+                        id="audio"
+                        required={true}
+                        type="file"
+                        accept="audio/mp3,audio/wav"
+                        className={classes.input}
+                        onChange={handleAudioChange}
+                      />
 
-                    {/* Add Audio File Button */}
-                    <label htmlFor="audio">
-                      <Button
-                        variant="outlined"
-                        color={file ? "secondary" : "inherit"}
-                        component="span"
-                        className={classes.button}
-                      >
-                        Audio File
-                        <LibraryMusicIcon className={classes.icon} />
-                      </Button>
+                      {/* Add Audio File Button */}
+                      <label htmlFor="audio">
+                        <Button
+                          variant="outlined"
+                          color={file ? "secondary" : "inherit"}
+                          component="span"
+                          className={classes.button}
+                        >
+                          Audio File
+                          <LibraryMusicIcon className={classes.icon} />
+                        </Button>
 
-                      {/* Text to display the uploaded file name */}
-                      {file && file.name}
-                    </label>
-                    <FormHelperText>{fileError}</FormHelperText>
-                  </FormControl>
-                </DialogContent>
-                <DialogActions>
-                  <Button
-                    disabled={submitting}
-                    onClick={() => setOpen(false)}
-                    className={classes.cancel}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    disabled={
-                      submitting ||
-                      !title.trim() ||
-                      !description.trim() ||
-                      !file
-                    }
-                    type="submit"
-                    className={classes.save}
-                  >
-                    {submitting ? (
-                      <CircularProgress className={classes.save} size={24} />
-                    ) : (
-                      "Update Track"
-                    )}
-                  </Button>
-                </DialogActions>
-              </form>
-            </Dialog>
-          );
-        }}
-      </Mutation>
-    </>
+                        {/* Text to display the uploaded file name */}
+                        {file && file.name}
+                      </label>
+                      <FormHelperText>{fileError}</FormHelperText>
+                    </FormControl>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button
+                      disabled={submitting}
+                      onClick={() => setOpen(false)}
+                      className={classes.cancel}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      disabled={
+                        submitting ||
+                        !title.trim() ||
+                        !description.trim() ||
+                        !file
+                      }
+                      type="submit"
+                      className={classes.save}
+                    >
+                      {submitting ? (
+                        <CircularProgress className={classes.save} size={24} />
+                      ) : (
+                        "Update Track"
+                      )}
+                    </Button>
+                  </DialogActions>
+                </form>
+              </Dialog>
+            );
+          }}
+        </Mutation>
+      </>
+    )
   );
 };
 
