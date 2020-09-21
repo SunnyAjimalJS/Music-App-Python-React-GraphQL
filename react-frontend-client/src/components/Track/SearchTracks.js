@@ -27,7 +27,7 @@ const SearchTracks = ({ classes, setSearchResults }) => {
         <form onSubmit={(event) => handleSubmit(event, client)}>
           <Paper className={classes.root} elevate={1}>
             {/* Clear button */}
-            <IconButton>
+            <IconButton onClick={clearSearchInput}>
               <ClearIcon />
             </IconButton>
             {/* Search field  */}
