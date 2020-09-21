@@ -12,6 +12,11 @@ import SearchIcon from "@material-ui/icons/Search";
 const SearchTracks = ({ classes, setSearchResults }) => {
   const [search, setSearch] = useState("");
 
+  const clearSearchInput = () => {
+    setSearchResults([]);
+    setSearch("");
+  };
+
   const handleSubmit = async (event, client) => {
     event.preventDefault();
     const res = await client.query({
@@ -39,6 +44,7 @@ const SearchTracks = ({ classes, setSearchResults }) => {
               }}
               onChange={(event) => setSearch(event.target.value)}
             />
+
             {/* Search Button */}
             <IconButton type="submit">
               <SearchIcon />
