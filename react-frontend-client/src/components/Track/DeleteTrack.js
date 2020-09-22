@@ -24,4 +24,12 @@ const DeleteTrack = ({ track }) => {
   );
 };
 
+const DELETE_TRACK_MUTATION = gql`
+  mutation($trackId: Int!) {
+    deleteTrack(trackId: $trackId) {
+      trackId
+    }
+  }
+`;
+
 export default DeleteTrack;
