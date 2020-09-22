@@ -5,6 +5,8 @@ import TrashIcon from "@material-ui/icons/DeleteForeverOutlined";
 import { UserContext } from "../../Root";
 
 const DeleteTrack = ({ track }) => {
+  const currentUser = useContext(UserContext);
+
   return <div>DeleteTrack</div>;
 };
 
