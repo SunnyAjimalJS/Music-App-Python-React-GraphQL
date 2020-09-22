@@ -6,6 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import TrashIcon from "@material-ui/icons/DeleteForeverOutlined";
 
 import { UserContext } from "../../Root";
+import { GET_TRACKS_QUERY } from "../../pages/App";
 
 const DeleteTrack = ({ track }) => {
   const currentUser = useContext(UserContext);
@@ -19,6 +20,7 @@ const DeleteTrack = ({ track }) => {
         onCompleted={(data) => {
           console.log({ data });
         }}
+        refetchQueries={() => [{ query: GET_TRACKS_QUERY }]}
       >
         {(deleteTrack) => (
           <IconButton onClick={deleteTrack}>
