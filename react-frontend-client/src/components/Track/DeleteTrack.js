@@ -8,7 +8,7 @@ const DeleteTrack = ({ track }) => {
   const currentUser = useContext(UserContext);
   const isCurrentUser = currentUser.id === track.postedBy.id;
 
-  return <div>DeleteTrack</div>;
+  return isCurrentUser && <div>DeleteTrack</div>;
 };
 
 export default DeleteTrack;
