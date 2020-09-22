@@ -7,7 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 const LikeTrack = ({ classes }) => {
-  return <div>LikeTrack</div>;
+  return <Mutation mutation={CREATE_LIKE_MUTATION}></Mutation>;
 };
 
 const CREATE_LIKE_MUTATION = gql`
