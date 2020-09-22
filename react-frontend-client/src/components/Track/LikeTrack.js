@@ -6,8 +6,13 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import IconButton from "@material-ui/core/IconButton";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
-const LikeTrack = ({ classes }) => {
-  return <Mutation mutation={CREATE_LIKE_MUTATION}></Mutation>;
+const LikeTrack = ({ classes, trackId, likeCount }) => {
+  return (
+    <Mutation
+      mutation={CREATE_LIKE_MUTATION}
+      variables={{ trackId }}
+    ></Mutation>
+  );
 };
 
 const CREATE_LIKE_MUTATION = gql`
