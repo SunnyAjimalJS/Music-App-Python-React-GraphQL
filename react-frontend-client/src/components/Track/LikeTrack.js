@@ -8,10 +8,19 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 const LikeTrack = ({ classes, trackId, likeCount }) => {
   return (
-    <Mutation
-      mutation={CREATE_LIKE_MUTATION}
-      variables={{ trackId }}
-    ></Mutation>
+    <Mutation mutation={CREATE_LIKE_MUTATION} variables={{ trackId }}>
+      {(createLike) => (
+        <IconButton
+          className={classes.iconButton}
+          onClick={(event) => {
+            event.stopPropagation();
+          }}
+        >
+          {likeCount}
+          <ThumbUpIcon className={classes.icon} />
+        </IconButton>
+      )}
+    </Mutation>
   );
 };
 
@@ -30,7 +39,7 @@ const CREATE_LIKE_MUTATION = gql`
 
 const styles = (theme) => ({
   iconButton: {
-    color: "deeppink",
+    color: "#00e676",
   },
   icon: {
     marginLeft: theme.spacing.unit / 2,
