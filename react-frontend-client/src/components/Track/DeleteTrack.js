@@ -13,9 +13,15 @@ const DeleteTrack = ({ track }) => {
 
   return (
     isCurrentUser && (
-      <Mutation mutation={DELETE_TRACK_MUTATION}>
+      <Mutation
+        mutation={DELETE_TRACK_MUTATION}
+        variables={{ trackId: track.id }}
+        onCompleted={(data) => {
+          console.log({ data });
+        }}
+      >
         {(deleteTrack) => (
-          <IconButton>
+          <IconButton onClick={deleteTrack}>
             <TrashIcon />
           </IconButton>
         )}
