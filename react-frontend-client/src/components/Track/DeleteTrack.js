@@ -4,7 +4,7 @@ import TrashIcon from "@material-ui/icons/DeleteForeverOutlined";
 
 import { UserContext } from "../../Root";
 
-const DeleteTrack = () => {
+const DeleteTrack = ({ track }) => {
   return <div>DeleteTrack</div>;
 };
 
