@@ -11,7 +11,17 @@ const DeleteTrack = ({ track }) => {
   const currentUser = useContext(UserContext);
   const isCurrentUser = currentUser.id === track.postedBy.id;
 
-  return isCurrentUser && <Mutation></Mutation>;
+  return (
+    isCurrentUser && (
+      <Mutation mutation={DELETE_TRACK_MUTATION}>
+        {(deleteTrack) => (
+          <IconButton>
+            <TrashIcon />
+          </IconButton>
+        )}
+      </Mutation>
+    )
+  );
 };
 
 export default DeleteTrack;
