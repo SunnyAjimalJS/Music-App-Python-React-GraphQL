@@ -5,7 +5,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import IconButton from "@material-ui/core/IconButton";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
-import { UserContext } from "../../Root";
+import { UserContext, GET_ME_QUERY } from "../../Root";
 
 const LikeTrack = ({ classes, trackId, likeCount }) => {
   const currentUser = useContext(UserContext);
@@ -24,6 +24,7 @@ const LikeTrack = ({ classes, trackId, likeCount }) => {
       onCompleted={(data) => {
         console.log({ data });
       }}
+      refetchQueries={() => [{ query: GET_ME_QUERY }]}
     >
       {(createLike) => (
         <IconButton

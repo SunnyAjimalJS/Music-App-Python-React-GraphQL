@@ -34,7 +34,7 @@ const Root = () => (
   </Query>
 );
 
-const GET_ME_QUERY = gql`
+export const GET_ME_QUERY = gql`
   {
     me {
       id
