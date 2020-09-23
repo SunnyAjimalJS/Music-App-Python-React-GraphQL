@@ -14,7 +14,15 @@ const DeleteTrack = ({ track }) => {
 
   const handleUpdateCache = (cache, { data: { deleteTrack } }) => {
     const data = cache.readQuery({ query: GET_TRACKS_QUERY });
-    data.tracks.findIndex();
+    const index = data.tracks.findIndex(
+      (track) => Number(track.id) === deleteTrack.trackId
+    );
+    // data.tracks.splice(index, 1);
+    const tracks = [
+      ...data.tracks.slice(0, index),
+      ...data.tracks.slice(index + 1),
+    ];
+    cache.writeQuery({ query: GET_TRACKS_QUERY, data: { tracks } });
   };
 
   return (
