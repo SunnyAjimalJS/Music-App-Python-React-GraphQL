@@ -12,6 +12,8 @@ const DeleteTrack = ({ track }) => {
   const currentUser = useContext(UserContext);
   const isCurrentUser = currentUser.id === track.postedBy.id;
 
+  const handleUpdateCache = (cache, response) => {};
+
   return (
     isCurrentUser && (
       <Mutation
@@ -20,7 +22,8 @@ const DeleteTrack = ({ track }) => {
         onCompleted={(data) => {
           console.log({ data });
         }}
-        refetchQueries={() => [{ query: GET_TRACKS_QUERY }]}
+        update={handleUpdateCache}
+        // refetchQueries={() => [{ query: GET_TRACKS_QUERY }]}
       >
         {(deleteTrack) => (
           <IconButton onClick={deleteTrack}>
