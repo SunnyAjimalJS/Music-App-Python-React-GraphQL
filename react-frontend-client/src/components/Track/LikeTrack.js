@@ -8,6 +8,8 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import { UserContext } from "../../Root";
 
 const LikeTrack = ({ classes, trackId, likeCount }) => {
+  const currentUser = useContext(UserContext);
+
   return (
     <Mutation
       mutation={CREATE_LIKE_MUTATION}
