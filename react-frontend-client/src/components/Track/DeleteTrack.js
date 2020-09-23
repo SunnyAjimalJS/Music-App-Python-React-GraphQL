@@ -12,7 +12,10 @@ const DeleteTrack = ({ track }) => {
   const currentUser = useContext(UserContext);
   const isCurrentUser = currentUser.id === track.postedBy.id;
 
-  const handleUpdateCache = (cache, response) => {};
+  const handleUpdateCache = (cache, { data: { deleteTrack } }) => {
+    const data = cache.readQuery({ query: GET_TRACKS_QUERY });
+    data.tracks.findIndex();
+  };
 
   return (
     isCurrentUser && (
