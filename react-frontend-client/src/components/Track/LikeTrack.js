@@ -10,6 +10,10 @@ import { UserContext } from "../../Root";
 const LikeTrack = ({ classes, trackId, likeCount }) => {
   const currentUser = useContext(UserContext);
 
+  const handleDisableLikedTrack = () => {
+    const likedTracks = currentUser.likeSet;
+  };
+
   return (
     <Mutation
       mutation={CREATE_LIKE_MUTATION}
@@ -20,11 +24,12 @@ const LikeTrack = ({ classes, trackId, likeCount }) => {
     >
       {(createLike) => (
         <IconButton
-          className={classes.iconButton}
           onClick={(event) => {
             event.stopPropagation();
             createLike();
           }}
+          className={classes.iconButton}
+          disabled={handleDisableLikedTrack()}
         >
           {likeCount}
           <ThumbUpIcon className={classes.icon} />
