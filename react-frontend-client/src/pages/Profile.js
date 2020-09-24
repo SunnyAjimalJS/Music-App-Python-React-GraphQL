@@ -41,7 +41,9 @@ const Profile = ({ classes, match }) => {
                 Created Tracks
               </Typography>
               {data.user.trackSet.map((track) => (
-                <div key={track.id}></div>
+                <div key={track.id}>
+                  {track.title} · {track.likes.length} Likes
+                </div>
               ))}
             </Paper>
           </div>
