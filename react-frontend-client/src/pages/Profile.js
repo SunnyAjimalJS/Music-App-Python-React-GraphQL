@@ -17,7 +17,14 @@ import AudioPlayer from "../components/Shared/AudioPlayer";
 
 const Profile = ({ classes, match }) => {
   const id = match.params.id;
-  return <Query query={PROFILE_QUERY} variables={{ id }}></Query>;
+  return (
+    <Query query={PROFILE_QUERY} variables={{ id }}>
+      {({ data, loading, error }) => {
+        if (loading) return <Loading />;
+        if (error) return <Error error={error} />;
+      }}
+    </Query>
+  );
 };
 
 const PROFILE_QUERY = gql`
