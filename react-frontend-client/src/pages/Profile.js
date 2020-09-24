@@ -42,7 +42,10 @@ const Profile = ({ classes, match }) => {
               </Typography>
               {data.user.trackSet.map((track) => (
                 <div key={track.id}>
-                  {track.title} · {track.likes.length} Likes
+                  <Typography>
+                    {track.title} · {track.likes.length} Likes
+                  </Typography>
+                  <AudioPlayer url={track.url} />
                 </div>
               ))}
             </Paper>
