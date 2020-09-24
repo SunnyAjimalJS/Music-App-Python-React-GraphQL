@@ -27,7 +27,11 @@ const Profile = ({ classes, match }) => {
           <div>
             {/* User Info Card */}
             <Card className={classes.card}>
-              <CardHeader avatar={<Avatar>{data.user.username[0]}</Avatar>} />
+              <CardHeader
+                avatar={<Avatar>{data.user.username[0]}</Avatar>}
+                title={data.user.username}
+                subheader={`Joined ${data.user.dateJoined}`}
+              />
             </Card>
           </div>
         );
