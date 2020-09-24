@@ -46,9 +46,12 @@ const Profile = ({ classes, match }) => {
                     {track.title} · {track.likes.length} Likes
                   </Typography>
                   <AudioPlayer url={track.url} />
+                  <Divider className={classes.divider} />
                 </div>
               ))}
             </Paper>
+
+            {/* Liked Tracks */}
           </div>
         );
       }}
