@@ -40,6 +40,7 @@ const Profile = ({ classes, match }) => {
                 <AudiotrackIcon className={classes.audioIcon} />
                 Created Tracks
               </Typography>
+              {/* To display the User's created Tracks and number of Likes using map */}
               {data.user.trackSet.map((track) => (
                 <div key={track.id}>
                   <Typography>
@@ -51,7 +52,8 @@ const Profile = ({ classes, match }) => {
               ))}
             </Paper>
 
-            {/* Liked Tracks */}
+            {/* User's Liked Tracks Section*/}
+            <Paper elevation={1} className={classes.paper}></Paper>
           </div>
         );
       }}
