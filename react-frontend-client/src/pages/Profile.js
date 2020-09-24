@@ -15,9 +15,43 @@ import Loading from "../components/Shared/Loading";
 import Error from "../components/Shared/Error";
 import AudioPlayer from "../components/Shared/AudioPlayer";
 
-const Profile = ({ classes }) => {
+const Profile = ({ classes, match }) => {
+  const id = match.params.id;
   return <div>Profile</div>;
 };
+
+const PROFILE_QUERY = gql`
+  query($id: Int!) {
+    user(id: $id) {
+      id
+      username
+      dateJoined
+      likeSet {
+        id
+        track {
+          id
+          title
+          url
+          likes {
+            id
+          }
+          postedBy {
+            id
+            username
+          }
+        }
+      }
+      trackSet {
+        id
+        title
+        url
+        likes {
+          id
+        }
+      }
+    }
+  }
+`;
 
 const styles = (theme) => ({
   paper: {
