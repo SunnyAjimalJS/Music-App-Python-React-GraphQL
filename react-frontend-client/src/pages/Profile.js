@@ -59,7 +59,14 @@ const Profile = ({ classes, match }) => {
                 Liked Tracks
               </Typography>
               {data.user.likeSet.map(({ track }) => (
-                <div key={track.id}></div>
+                <div key={track.id}>
+                  <Typography>
+                    {track.title} · {track.likes.length} Likes · Posted by:{" "}
+                    {track.postedBy.username}
+                  </Typography>
+                  <AudioPlayer url={track.url} />
+                  <Divider className={classes.divider} />
+                </div>
               ))}
             </Paper>
           </div>
