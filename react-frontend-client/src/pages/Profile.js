@@ -33,6 +33,9 @@ const Profile = ({ classes, match }) => {
                 subheader={`Joined ${data.user.dateJoined}`}
               />
             </Card>
+
+            {/* Created Tracks Section */}
+            <Paper></Paper>
           </div>
         );
       }}
