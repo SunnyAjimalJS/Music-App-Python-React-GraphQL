@@ -53,7 +53,12 @@ const Profile = ({ classes, match }) => {
             </Paper>
 
             {/* User's Liked Tracks Section*/}
-            <Paper elevation={1} className={classes.paper}></Paper>
+            <Paper elevation={1} className={classes.paper}>
+              <Typography variant="title" className={classes.title}>
+                <ThumbUpIcon className={classes.thumbIcon} />
+                Liked Tracks
+              </Typography>
+            </Paper>
           </div>
         );
       }}
