@@ -40,6 +40,9 @@ const Profile = ({ classes, match }) => {
                 <AudiotrackIcon className={classes.audioIcon} />
                 Created Tracks
               </Typography>
+              {data.user.trackSet.map((track) => (
+                <div key={track.id}></div>
+              ))}
             </Paper>
           </div>
         );
