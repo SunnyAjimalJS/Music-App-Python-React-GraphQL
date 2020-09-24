@@ -22,6 +22,15 @@ const Profile = ({ classes, match }) => {
       {({ data, loading, error }) => {
         if (loading) return <Loading />;
         if (error) return <Error error={error} />;
+
+        return (
+          <div>
+            {/* User Info Card */}
+            <Card className={classes.card}>
+              <CardHeader avatar={<Avatar>{data.user.username[0]}</Avatar>} />
+            </Card>
+          </div>
+        );
       }}
     </Query>
   );
