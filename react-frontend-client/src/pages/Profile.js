@@ -36,10 +36,10 @@ const Profile = ({ classes, match }) => {
 
             {/* Created Tracks Section */}
             <Paper elevation={1} className={classes.paper}>
-              <Typography
-                variant="title"
-                className={classes.title}
-              ></Typography>
+              <Typography variant="title" className={classes.title}>
+                <AudiotrackIcon className={classes.audioIcon} />
+                Created Tracks
+              </Typography>
             </Paper>
           </div>
         );
