@@ -35,7 +35,12 @@ const Profile = ({ classes, match }) => {
             </Card>
 
             {/* Created Tracks Section */}
-            <Paper></Paper>
+            <Paper elevation={1} className={classes.paper}>
+              <Typography
+                variant="title"
+                className={classes.title}
+              ></Typography>
+            </Paper>
           </div>
         );
       }}
