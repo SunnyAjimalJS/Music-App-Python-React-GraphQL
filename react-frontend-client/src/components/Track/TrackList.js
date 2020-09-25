@@ -32,7 +32,7 @@ const TrackList = ({ classes, tracks }) => (
               secondary={
                 <Link
                   className={classes.link}
-                  to={`/profile/${track.postedBy}`}
+                  to={`/profile/${track.postedBy.id}`}
                 >
                   {track.postedBy.username}
                 </Link>
