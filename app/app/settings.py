@@ -26,9 +26,7 @@ SECRET_KEY = 't0dw2=s_4lqg7(6x$=a0fvzpts@+pn14qi&$haou5b!cs2)r7x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['evening-journey-15372.herokuapp.com', '127.0.0.1:8000', '127.0.0.1', "http://localhost:3000",
-    "http://localhost:8000",
-    "http://127.0.0.1:8000"]
+ALLOWED_HOSTS = []
  
 
 # Application definition
@@ -68,8 +66,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-  'whitenoise.middleware.WhiteNoiseMiddleware',
+    
 ]
 
 CORS_ORIGIN_WHITELIST = [
