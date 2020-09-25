@@ -45,9 +45,9 @@ $ npm start
 
 ### 5. *Once this is complete*, you will see `Project is running at http://localhost:3000` and it should load automatically in your browser.
 
-## Thank you for visiting!
+### Thank you for visiting!
 
-## License
+### License
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
