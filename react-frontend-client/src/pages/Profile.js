@@ -26,12 +26,15 @@ const Profile = ({ classes, match }) => {
 
         return (
           <div>
-            {/* User Info Card */}
+            {/* User Info Header Card */}
             <Card className={classes.card}>
               <CardHeader
                 avatar={<Avatar>{data.user.username[0]}</Avatar>}
                 title={data.user.username}
-                subheader={`Joined ${data.user.dateJoined}`}
+                subheader={`Joined ${format(
+                  data.user.dateJoined,
+                  "Do MMM, YYYY"
+                )}`}
               />
             </Card>
 
